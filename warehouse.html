@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>倉庫事業 | 有限会社 がなは運送</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Josefin+Sans:wght@300;400;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --gold:#c9a84c; --gold2:#e6c06a; --green:#9ae169;
+  --black:#f9f7f2; --dark:#f0ede6; --dark2:#ffffff; --dark3:#f5f3ee;
+  --white:#1a1a1a; --gray:#888;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--black); color:var(--white); font-family:'Noto Serif JP',serif; }
+a { color:inherit; text-decoration:none; }
+img { max-width:100%; }
+
+/* ── HEADER ── */
+header {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:20px 48px; display:flex; align-items:center; justify-content:space-between;
+  background:rgba(249,247,242,.96); backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(201,168,76,.15);
+  transition:box-shadow .3s;
+}
+.hd-logo img { height:38px; }
+.hd-nav { display:flex; align-items:center; gap:36px; }
+.hd-nav a {
+  font-family:'Josefin Sans',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.25em; color:rgba(30,30,30,.65); text-transform:uppercase;
+  transition:color .3s; position:relative;
+}
+.hd-nav a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+.hd-nav a:hover { color:var(--gold); }
+.hd-nav a:hover::after { transform:scaleX(1); }
+.hd-nav a.active { color:var(--gold); }
+.hd-tel { font-family:'Josefin Sans',sans-serif; font-size:13px; font-weight:700; letter-spacing:.1em; color:var(--gold) !important; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  margin-top:80px; height:400px;
+  background:linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  background-image:url('work13.jpg');
+  background-size:cover; background-position:center;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.page-hero::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,.55); }
+.page-hero-body { position:relative; z-index:1; text-align:center; }
+.page-hero-en {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(48px,8vw,80px);
+  font-weight:300; color:rgba(255,255,255,.15); letter-spacing:.1em;
+  line-height:1; margin-bottom:-16px; display:block;
+}
+.page-hero-ja {
+  font-family:'Noto Serif JP',serif; font-size:clamp(20px,3vw,28px);
+  font-weight:600; color:#fff; letter-spacing:.2em;
+}
+.page-hero-rule { width:48px; height:2px; background:var(--gold); margin:16px auto 0; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  background:var(--dark); padding:14px 48px;
+  font-family:'Josefin Sans',sans-serif; font-size:11px;
+  letter-spacing:.15em; color:var(--gray);
+  display:flex; align-items:center; gap:10px;
+}
+.breadcrumb a { color:var(--gold); }
+.breadcrumb a:hover { text-decoration:underline; }
+
+/* ── SECTION ── */
+.sec { padding:100px 0; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 48px; }
+
+.tag {
+  font-family:'Josefin Sans',sans-serif; font-size:9px; font-weight:700;
+  letter-spacing:.4em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:12px;
+  margin-bottom:16px;
+}
+.tag::before, .tag::after { content:''; flex:1; max-width:40px; height:1px; background:var(--gold); }
+.sec-h2 {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,48px);
+  font-weight:300; line-height:1.2; color:var(--white); margin-bottom:16px;
+}
+.sec-h2 em { color:var(--gold); font-style:italic; }
+.gold-rule { width:48px; height:2px; background:var(--gold); margin-bottom:40px; }
+.gold-rule.c { margin-left:auto; margin-right:auto; }
+
+/* ── SERVICE SPLIT ── */
+.service-split {
+  display:grid; grid-template-columns:1fr 1fr; gap:0;
+  min-height:520px; overflow:hidden;
+  border:1px solid rgba(201,168,76,.15);
+  margin-bottom:64px;
+}
+.service-split.reverse { direction:rtl; }
+.service-split.reverse > * { direction:ltr; }
+.ss-img { position:relative; overflow:hidden; min-height:360px; }
+.ss-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+.service-split:hover .ss-img img { transform:scale(1.04); }
+.ss-body {
+  background:#fff; padding:64px 56px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.ss-num {
+  font-family:'Cormorant Garamond',serif; font-size:72px; font-weight:300;
+  color:rgba(201,168,76,.12); line-height:1; margin-bottom:-8px;
+}
+.ss-cat {
+  font-family:'Josefin Sans',sans-serif; font-size:9px; font-weight:700;
+  letter-spacing:.4em; text-transform:uppercase; color:var(--gold);
+  margin-bottom:20px;
+}
+.ss-title {
+  font-family:'Noto Serif JP',serif; font-size:clamp(20px,2.5vw,26px);
+  font-weight:600; line-height:1.5; color:#1a1a1a; margin-bottom:24px;
+}
+.ss-title em { color:var(--gold); font-style:normal; }
+.ss-text { font-size:14px; line-height:2.2; color:rgba(30,30,30,.65); }
+.ss-text p { margin-bottom:16px; }
+
+/* ── FEATURES ── */
+.features-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+  margin-top:64px;
+}
+.feat-card {
+  background:#fff; padding:40px 32px;
+  border:1px solid rgba(201,168,76,.15); border-top:3px solid var(--gold);
+  text-align:center;
+}
+.feat-icon { font-size:32px; color:var(--gold); margin-bottom:20px; }
+.feat-title { font-family:'Noto Serif JP',serif; font-size:16px; font-weight:600; color:#1a1a1a; margin-bottom:12px; }
+.feat-text { font-size:13px; color:rgba(30,30,30,.55); line-height:2; }
+
+/* ── CTA ── */
+.cta-sec {
+  background:#1a1a1a; padding:80px 48px; text-align:center;
+}
+.cta-sec h3 {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,40px);
+  font-weight:300; color:#fff; margin-bottom:16px;
+}
+.cta-sec h3 em { color:var(--gold); font-style:italic; }
+.cta-sec p { font-size:14px; color:rgba(255,255,255,.5); line-height:2; margin-bottom:40px; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-gold {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 40px; background:var(--gold); color:#1a1a1a;
+  font-family:'Josefin Sans',sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase;
+  transition:background .3s, transform .3s;
+}
+.btn-gold:hover { background:var(--gold2); transform:translateY(-2px); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:16px 40px; border:1px solid rgba(255,255,255,.3); color:#fff;
+  font-family:'Josefin Sans',sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase;
+  transition:border-color .3s, transform .3s;
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+/* ── FOOTER ── */
+footer { background:#2a2a2a; padding:48px; }
+.ft-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; gap:48px; }
+.ft-logo img { height:36px; margin-bottom:16px; filter:brightness(.7); }
+.ft-logo p, .ft-logo address { font-size:12px; color:rgba(255,255,255,.4); line-height:2; font-style:normal; margin-top:8px; }
+.ft-col h4 { font-family:'Josefin Sans',sans-serif; font-size:9px; font-weight:700; letter-spacing:.3em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(201,168,76,.2); }
+.ft-col a { display:block; font-size:12px; color:rgba(255,255,255,.4); margin-bottom:10px; transition:color .3s; }
+.ft-col a:hover { color:var(--gold); }
+.ft-copy { max-width:1100px; margin:32px auto 0; padding-top:24px; border-top:1px solid rgba(255,255,255,.08); font-size:11px; color:rgba(255,255,255,.25); font-family:'Josefin Sans',sans-serif; letter-spacing:.1em; }
+
+@media(max-width:768px) {
+  header { padding:16px 24px; }
+  .hd-nav { display:none; }
+  .page-hero { height:260px; }
+  .breadcrumb { padding:12px 24px; }
+  .wrap { padding:0 24px; }
+  .service-split { grid-template-columns:1fr; }
+  .service-split.reverse { direction:ltr; }
+  .ss-img { min-height:240px; }
+  .ss-body { padding:40px 28px; }
+  .features-grid { grid-template-columns:1fr; }
+  .ft-inner { grid-template-columns:1fr; gap:32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="hd-logo"><img src="logo_wh.png" alt="がなは運送"></a>
+  <nav class="hd-nav">
+    <a href="index.html#concept">会社概要</a>
+    <a href="index.html#transport">運送事業</a>
+    <a href="warehouse.html" class="active">倉庫事業</a>
+    <a href="index.html#recruit">採用情報</a>
+    <a href="index.html#estimate">見積もり</a>
+    <a href="index.html#contact">お問い合わせ</a>
+    <a href="tel:0980-43-9200" class="hd-tel"><i class="fas fa-phone"></i> 0980-43-9200</a>
+  </nav>
+</header>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="page-hero-body">
+    <span class="page-hero-en">Warehouse</span>
+    <h1 class="page-hero-ja">倉庫事業</h1>
+    <div class="page-hero-rule"></div>
+  </div>
+</div>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <span>›</span>
+  <span>倉庫事業</span>
+</div>
+
+<!-- ── SERVICES ── -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="wrap">
+    <div style="text-align:center; margin-bottom:72px;">
+      <div class="tag" style="justify-content:center;">Warehouse Business</div>
+      <h2 class="sec-h2" style="text-align:center;">がなは運送の<em>倉庫事業</em></h2>
+      <div class="gold-rule c"></div>
+      <p style="font-size:14px; color:rgba(30,30,30,.55); line-height:2; margin-top:20px;">
+        北部地域の企業様のニーズに合わせた柔軟な倉庫サービスをご提供しています。
+      </p>
+    </div>
+
+    <!-- サービス1: 貸倉庫 -->
+    <div class="service-split">
+      <div class="ss-img">
+        <img src="warehouse1.jpg" alt="貸倉庫">
+      </div>
+      <div class="ss-body">
+        <div class="ss-num">01</div>
+        <div class="ss-cat">Rental Storage</div>
+        <h2 class="ss-title">貸<em>倉庫</em>事業</h2>
+        <div class="ss-text">
+          <p>北部地域の企業様向けのレンタルストレージサービスです。急な業務拡大や、一時的な物品保管場所の必要性など、様々なニーズに合わせてお貸しすることができます。</p>
+          <p>大切なお荷物を安全・確実に保管いたします。まずはお気軽にご相談ください。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- サービス2: コンテナリース -->
+    <div class="service-split reverse">
+      <div class="ss-img">
+        <img src="warehouse2.jpg" alt="コンテナリース販売">
+      </div>
+      <div class="ss-body">
+        <div class="ss-num">02</div>
+        <div class="ss-cat">Container Lease & Sales</div>
+        <h2 class="ss-title">コンテナ<em>リース・販売</em></h2>
+        <div class="ss-text">
+          <p>豊富な在庫と柔軟なリース期間で対応いたします。短期・長期どちらのご要望にもお応えできます。</p>
+          <p>販売サービスも承っておりますので、購入をご検討の企業様もお気軽にお問い合わせください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="sec" style="background:var(--dark);">
+  <div class="wrap">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div class="tag" style="justify-content:center;">Features</div>
+      <h2 class="sec-h2" style="text-align:center;">選ばれる<em>3つの理由</em></h2>
+      <div class="gold-rule c"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="feat-title">北部地域に密着</div>
+        <p class="feat-text">名護市を拠点に、北部地域の企業様のニーズに素早く対応。地元に根ざした機動力が強みです。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="feat-title">安全・確実な保管</div>
+        <p class="feat-text">創業1996年以来培ってきたノウハウで、大切なお荷物を安全に保管いたします。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="fas fa-handshake"></i></div>
+        <div class="feat-title">柔軟なご対応</div>
+        <p class="feat-text">短期・長期・急なご依頼にも柔軟に対応。お客様のペースに合わせたサービスを提供します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<div class="cta-sec">
+  <h3>倉庫のご利用・<em>お問い合わせ</em></h3>
+  <p>ご不明な点やご相談はお電話・メールにてお気軽にどうぞ。<br>担当者が丁寧にご対応いたします。</p>
+  <div class="cta-btns">
+    <a href="tel:0980-43-9200" class="btn-gold"><i class="fas fa-phone"></i> 0980-43-9200</a>
+    <a href="index.html#contact" class="btn-outline"><i class="fas fa-envelope"></i> メールで問い合わせる</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">
+      <img src="logo_wh.png" alt="がなは運送">
+      <p>名護市伊差川にある一般貨物運送・<br>第一種利用運送・倉庫事業者</p>
+      <address>〒905-1152 沖縄県名護市字伊差川1057-1<br>TEL: 0980-43-9200　FAX: 0980-43-9210</address>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <a href="index.html#transport">一般貨物運送</a>
+      <a href="index.html#transport">第一種利用運送</a>
+      <a href="warehouse.html">倉庫事業</a>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <a href="index.html#about">会社概要</a>
+      <a href="index.html#recruit">採用情報</a>
+      <a href="index.html#news">ニュース</a>
+      <a href="index.html#contact">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="ft-copy">© 2026 有限会社 がなは運送 All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
