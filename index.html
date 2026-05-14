@@ -44,15 +44,26 @@
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       gap: 32px;
       transition: opacity .8s ease, visibility .8s ease;
+      overflow: hidden;
     }
-    #loader.hide { opacity: 0; visibility: hidden; }
-    #loader.hide { pointer-events: none; }
+    #loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
     .ld-logo { height: 52px; filter: brightness(0) invert(1); opacity: 0; transform: translateY(20px); animation: ldLogoIn .9s .3s ease forwards; }
-    .ld-line { width: 0; height: 1px; background: var(--gold); animation: ldLine 1.2s .6s ease forwards; }
-    .ld-text { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: .5em; color: rgba(255,255,255,.35); text-transform: uppercase; opacity: 0; animation: ldFadeIn .8s 1s ease forwards; }
+    .ld-line-wrap { position: relative; width: 220px; height: 1px; }
+    .ld-line { width: 0; height: 1px; background: var(--gold); animation: ldLine 1.6s .4s ease forwards; }
+    .ld-truck {
+      position: absolute; top: -14px;
+      font-size: 22px; color: var(--gold);
+      animation: ldTruck 1.6s .4s ease forwards;
+      opacity: 0;
+    }
+    .ld-text { font-family: 'Josefin Sans', sans-serif; font-size: 9px; letter-spacing: .5em; color: rgba(255,255,255,.35); text-transform: uppercase; opacity: 0; animation: ldFadeIn .8s 1.2s ease forwards; }
     @keyframes ldLogoIn { to { opacity: 1; transform: none; } }
-    @keyframes ldLine   { to { width: 120px; } }
+    @keyframes ldLine   { to { width: 220px; } }
     @keyframes ldFadeIn { to { opacity: 1; } }
+    @keyframes ldTruck  {
+      0%   { opacity: 1; left: -10px; }
+      100% { opacity: 1; left: calc(220px - 28px); }
+    }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        SCROLL PROGRESS BAR
@@ -838,7 +849,10 @@
 <!-- ── LOADER ── -->
 <div id="loader">
   <img src="logo_wh.png" alt="がなは運送" class="ld-logo">
-  <div class="ld-line"></div>
+  <div class="ld-line-wrap">
+    <div class="ld-line"></div>
+    <i class="fas fa-truck ld-truck"></i>
+  </div>
   <div class="ld-text">Ganaha Transportation Ltd.</div>
 </div>
 
