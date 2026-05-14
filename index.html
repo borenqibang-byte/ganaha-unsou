@@ -1371,8 +1371,20 @@
   /* contact form */
   function doSub(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.sub-btn');
-    btn.textContent = '✓  Message Sent — 担当者よりご連絡いたします';
+    const f = e.target;
+    const inputs = f.querySelectorAll('input, textarea, select');
+    let body = 'がなは運送 お問い合わせフォームより\n\n';
+    inputs.forEach(el => {
+      if (el.name || el.placeholder) {
+        body += (el.placeholder || el.name) + '：' + el.value + '\n';
+      }
+    });
+    const mailto = 'mailto:g@ganaha-unsou.co.jp'
+      + '?subject=' + encodeURIComponent('【がなは運送】お問い合わせ')
+      + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+    const btn = f.querySelector('.sub-btn');
+    btn.textContent = '✓  メールソフトが開きます — そのまま送信してください';
     btn.style.background = '#6bba38';
     btn.disabled = true;
   }
@@ -1380,6 +1392,17 @@
   /* estimate form */
   document.getElementById('estForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    const inputs = this.querySelectorAll('input, textarea, select');
+    let body = 'がなは運送 無料お見積もりフォームより\n\n';
+    const labels = this.querySelectorAll('label');
+    inputs.forEach((el, i) => {
+      const label = labels[i] ? labels[i].textContent.replace('*','').trim() : el.placeholder;
+      if (el.value) body += label + '：' + el.value + '\n';
+    });
+    const mailto = 'mailto:g@ganaha-unsou.co.jp'
+      + '?subject=' + encodeURIComponent('【がなは運送】無料お見積もりのご依頼')
+      + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
     this.style.display = 'none';
     document.getElementById('estDone').style.display = 'block';
   });
