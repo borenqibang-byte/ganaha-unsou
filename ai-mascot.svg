@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">がなは運送 AI配送ロボット公式マスコット</title>
+  <desc id="desc">白い丸みのあるAI配送ロボット。青とオレンジのアクセント、胸にがなは運送のロゴ、背中に小型配送ボックス。</desc>
+  <defs>
+    <linearGradient id="body" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.52" stop-color="#f1f7fb"/>
+      <stop offset="1" stop-color="#dce9f2"/>
+    </linearGradient>
+    <linearGradient id="visor" x1="0" x2="1">
+      <stop offset="0" stop-color="#12324a"/>
+      <stop offset="1" stop-color="#1e628a"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#14364f" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M817 429c63 7 119 59 129 125l42 271c11 72-45 136-118 136H760V430c18-3 37-4 57-1z" fill="#f58a1f"/>
+    <path d="M807 465c40 5 76 39 82 81l36 233c7 44-28 84-73 84h-92V469c15-4 31-6 47-4z" fill="#f8a94a"/>
+    <path d="M800 529h76l26 173h-102z" fill="#ffffff" opacity="0.82"/>
+
+    <path d="M426 417h348c90 0 164 74 164 164v190c0 115-94 209-209 209H471c-115 0-209-94-209-209V581c0-90 74-164 164-164z" fill="url(#body)"/>
+    <path d="M315 617c-47 5-84 45-84 94v95c0 50 37 91 84 96z" fill="#e6f1f8"/>
+    <path d="M885 617c47 5 84 45 84 94v95c0 50-37 91-84 96z" fill="#e6f1f8"/>
+
+    <rect x="378" y="250" width="444" height="282" rx="138" fill="url(#body)"/>
+    <path d="M455 337h290c34 0 62 28 62 62v24c0 34-28 62-62 62H455c-34 0-62-28-62-62v-24c0-34 28-62 62-62z" fill="url(#visor)"/>
+    <circle cx="508" cy="411" r="30" fill="#66d9ff"/>
+    <circle cx="692" cy="411" r="30" fill="#66d9ff"/>
+    <path d="M552 454c31 26 66 26 97 0" fill="none" stroke="#66d9ff" stroke-width="14" stroke-linecap="round"/>
+
+    <path d="M600 250v-71" fill="none" stroke="#1878b9" stroke-width="22" stroke-linecap="round"/>
+    <circle cx="600" cy="157" r="28" fill="#f58a1f"/>
+
+    <path d="M377 606h446" fill="none" stroke="#1878b9" stroke-width="26" stroke-linecap="round"/>
+    <path d="M400 662h400" fill="none" stroke="#f58a1f" stroke-width="18" stroke-linecap="round"/>
+
+    <rect x="425" y="700" width="350" height="150" rx="38" fill="#ffffff" stroke="#d0e1ec" stroke-width="10"/>
+    <text x="600" y="765" text-anchor="middle" font-family="'Yu Gothic', 'Meiryo', sans-serif" font-size="48" font-weight="700" fill="#155c8e">がなは運送</text>
+    <path d="M488 810h224" stroke="#f58a1f" stroke-width="14" stroke-linecap="round"/>
+
+    <path d="M381 930c-32 47-25 111 17 148 42 37 107 34 146-6l33-34-120-134z" fill="#e6f1f8"/>
+    <path d="M819 930c32 47 25 111-17 148-42 37-107 34-146-6l-33-34 120-134z" fill="#e6f1f8"/>
+    <path d="M453 1031h128" stroke="#1878b9" stroke-width="22" stroke-linecap="round"/>
+    <path d="M619 1031h128" stroke="#1878b9" stroke-width="22" stroke-linecap="round"/>
+
+    <circle cx="340" cy="765" r="24" fill="#1878b9"/>
+    <circle cx="860" cy="765" r="24" fill="#1878b9"/>
+    <path d="M336 782c-11 29 2 61 30 75" fill="none" stroke="#f58a1f" stroke-width="18" stroke-linecap="round"/>
+    <path d="M864 782c11 29-2 61-30 75" fill="none" stroke="#f58a1f" stroke-width="18" stroke-linecap="round"/>
+  </g>
+</svg>
