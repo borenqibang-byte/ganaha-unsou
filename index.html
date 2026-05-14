@@ -468,56 +468,35 @@
     .fb-body .sec-h2 { color: #fff; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       FLEET — horizontal scroll
+       FLEET — grid
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    #fleet { background: #0e0e0e; padding: 100px 0; overflow: hidden; }
-    .fleet-header { text-align: center; margin-bottom: 64px; padding: 0 48px; }
-    .fleet-header .sec-h2 { color: #fff; }
-    .fleet-header .tag { color: var(--gold); justify-content: center; }
-    .fleet-header .tag::before, .fleet-header .tag::after { background: var(--gold); }
-    .fleet-scroll-wrap {
-      position: relative;
-      overflow: hidden;
+    #fleet { background: var(--black); }
+    .fleet-header { text-align: center; margin-bottom: 56px; }
+    .fleet-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border: 1px solid rgba(201,168,76,.2);
     }
-    .fleet-track {
-      display: flex; gap: 24px;
-      padding: 20px 56px 40px;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      scrollbar-width: none; -ms-overflow-style: none;
-      cursor: grab;
+    .fi {
+      padding: 24px 28px;
+      border-right: 1px solid rgba(201,168,76,.1);
+      border-bottom: 1px solid rgba(201,168,76,.1);
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background .3s;
+      position: relative; overflow: hidden;
     }
-    .fleet-track:active { cursor: grabbing; }
-    .fleet-track::-webkit-scrollbar { display: none; }
-    .fleet-card {
-      flex: 0 0 280px; scroll-snap-align: start;
-      background: #1a1a1a; border: 1px solid rgba(201,168,76,.15);
-      padding: 40px 32px; position: relative;
-      transition: border-color .3s, transform .3s, background .3s;
+    .fi::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--gold);
+      transform: scaleY(0); transition: transform .3s;
     }
-    .fleet-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s;
+    .fi:hover { background: rgba(201,168,76,.06); }
+    .fi:hover::before { transform: scaleY(1); }
+    .fi-name { font-size: 14px; color: rgba(30,30,30,.75); letter-spacing: .08em; }
+    .fi-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 300; color: var(--gold); line-height: 1;
     }
-    .fleet-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-6px); background: #1f1f1f; }
-    .fleet-card:hover::before { transform: scaleX(1); }
-    .fc-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300;
-      color: rgba(201,168,76,.1); line-height: 1; margin-bottom: -16px;
-    }
-    .fc-name { font-size: 15px; color: rgba(255,255,255,.85); letter-spacing: .08em; margin-bottom: 20px; line-height: 1.6; }
-    .fc-count {
-      font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300;
-      color: var(--gold); line-height: 1;
-    }
-    .fc-unit { font-family: 'Josefin Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,.3); letter-spacing: .2em; margin-top: 6px; }
-    .fleet-arrows { display: flex; justify-content: center; gap: 16px; margin-top: 40px; padding: 0 56px; }
-    .fleet-arr {
-      width: 48px; height: 48px; border: 1px solid rgba(201,168,76,.3);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); cursor: pointer; transition: background .3s, border-color .3s;
-      font-size: 14px; background: transparent;
-    }
-    .fleet-arr:hover { background: var(--gold); color: #1a1a1a; border-color: var(--gold); }
+    .fi-n small { font-size: 12px; color: rgba(30,30,30,.4); font-family: 'Josefin Sans', sans-serif; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        CINEMATIC DIVIDER
@@ -1002,31 +981,27 @@
 </section>
 
 <!-- ── FLEET ── -->
-<section id="fleet">
-  <div class="fleet-header" data-r="up">
-    <div class="tag" style="justify-content:center;">Fleet</div>
-    <h2 class="sec-h2" style="text-align:center; color:#fff;">保有<em>車両</em></h2>
-    <div class="gold-rule c"></div>
-    <p style="font-family:'Josefin Sans',sans-serif; font-size:11px; letter-spacing:.2em; color:rgba(255,255,255,.3); text-transform:uppercase;">← scroll to explore →</p>
-  </div>
-  <div class="fleet-scroll-wrap">
-    <div class="fleet-track" id="fleetTrack">
-      <div class="fleet-card"><div class="fc-num">01</div><div class="fc-name">トレーラーヘッド</div><div class="fc-count">3</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">02</div><div class="fc-name">12t ユニック車</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">03</div><div class="fc-name">7t ユニック車</div><div class="fc-count">2</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">04</div><div class="fc-name">ウィングシャーシー</div><div class="fc-count">3</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">05</div><div class="fc-name">アオリ付きシャーシー</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">06</div><div class="fc-name">2軸フラットシャーシ</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">07</div><div class="fc-name">3t ウィング車</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">08</div><div class="fc-name">4t エアサスパワーゲート車</div><div class="fc-count">2</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">09</div><div class="fc-name">3t パワーゲート車</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">10</div><div class="fc-name">2t パワーゲート車</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
-      <div class="fleet-card"><div class="fc-num">11</div><div class="fc-name">20F コンテナシャーシ</div><div class="fc-count">1</div><div class="fc-unit">台</div></div>
+<section id="fleet" class="sec">
+  <div class="wrap">
+    <div class="fleet-header" data-r="up">
+      <div class="tag" style="justify-content:center;">Fleet</div>
+      <h2 class="sec-h2" style="text-align:center;">保有<em>車両</em></h2>
+      <div class="gold-rule c"></div>
     </div>
-  </div>
-  <div class="fleet-arrows">
-    <button class="fleet-arr" id="fleetPrev"><i class="fas fa-arrow-left"></i></button>
-    <button class="fleet-arr" id="fleetNext"><i class="fas fa-arrow-right"></i></button>
+    <div class="fleet-grid" data-r="up">
+      <div class="fi"><span class="fi-name">トレーラーヘッド</span><span class="fi-n">3<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">12tユニック車</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">7tユニック車</span><span class="fi-n">2<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">ウィングシャーシー</span><span class="fi-n">3<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">アオリ付きシャーシー</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">2軸フラットシャーシ</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">3tウィング車</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">4t エアサスパワーゲート車</span><span class="fi-n">2<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">3t パワーゲート車</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">2t パワーゲート車</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi"><span class="fi-name">20F コンテナシャーシ</span><span class="fi-n">1<small>台</small></span></div>
+      <div class="fi" style="background:rgba(201,168,76,.03);border-color:transparent;"></div>
+    </div>
   </div>
 </section>
 
