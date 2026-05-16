@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Josefin+Sans:wght@300;400;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root { --gold:#c9a84c; --green:#9ae169; --black:#f9f7f2; --dark:#f0ede6; --white:#1a1a1a; --gray:#888; }
+:root { --gold:#c9a84c; --black:#f9f7f2; --dark:#f0ede6; --white:#1a1a1a; --gray:#888; }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 body { background:var(--black); color:var(--white); font-family:'Noto Serif JP',serif; }
 a { color:inherit; text-decoration:none; }
@@ -21,16 +21,12 @@ header { position:fixed; top:0; left:0; right:0; z-index:100; padding:20px 40px;
 .hd-back { font-family:'Josefin Sans',sans-serif; font-size:11px; letter-spacing:.2em; color:var(--gold); display:flex; align-items:center; gap:8px; }
 .hd-back:hover { opacity:.7; }
 
+/* HERO */
+.art-hero { width:100%; max-height:500px; object-fit:cover; display:block; margin-top:80px; }
+
 /* ARTICLE */
-.art-hero { width:100%; max-height:480px; object-fit:cover; display:block; margin-top:80px; }
-.art-hero-placeholder { margin-top:80px; height:120px; background:var(--dark); }
 .art-wrap { max-width:780px; margin:0 auto; padding:56px 40px 100px; }
-.art-cat {
-  display:inline-block; font-family:'Josefin Sans',sans-serif;
-  font-size:10px; letter-spacing:.2em; font-weight:700; text-transform:uppercase;
-  padding:4px 14px; margin-bottom:20px;
-  background:rgba(201,168,76,.12); color:#a07820;
-}
+.art-cat { display:inline-block; font-family:'Josefin Sans',sans-serif; font-size:10px; letter-spacing:.2em; font-weight:700; text-transform:uppercase; padding:4px 14px; margin-bottom:20px; background:rgba(201,168,76,.12); color:#a07820; }
 .art-date { font-family:'Josefin Sans',sans-serif; font-size:12px; letter-spacing:.15em; color:var(--gray); display:block; margin-bottom:16px; }
 .art-title { font-size:clamp(22px,4vw,34px); font-weight:600; line-height:1.5; margin-bottom:32px; color:#1a1a1a; }
 .art-title em { color:var(--gold); font-style:normal; }
@@ -39,13 +35,15 @@ header { position:fixed; top:0; left:0; right:0; z-index:100; padding:20px 40px;
 .art-body p { margin-bottom:24px; }
 .art-body h2 { font-size:18px; font-weight:600; color:#1a1a1a; margin:40px 0 16px; padding-left:16px; border-left:3px solid var(--gold); }
 
-.back-btn {
-  display:inline-flex; align-items:center; gap:10px;
-  margin-top:56px; padding:14px 32px;
-  border:1px solid rgba(201,168,76,.4); color:var(--gold);
-  font-family:'Josefin Sans',sans-serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
-  transition:background .3s, color .3s;
-}
+/* PHOTO GALLERY */
+.gallery { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:32px 0; }
+.gallery img { width:100%; height:260px; object-fit:cover; display:block; transition:transform .3s; }
+.gallery img:hover { transform:scale(1.02); }
+.gallery .wide { grid-column:1 / -1; }
+.gallery .wide img { height:340px; }
+
+/* BACK BTN */
+.back-btn { display:inline-flex; align-items:center; gap:10px; margin-top:56px; padding:14px 32px; border:1px solid rgba(201,168,76,.4); color:var(--gold); font-family:'Josefin Sans',sans-serif; font-size:11px; letter-spacing:.2em; text-transform:uppercase; transition:background .3s, color .3s; }
 .back-btn:hover { background:var(--gold); color:#fff; }
 
 /* FOOTER */
@@ -59,7 +57,7 @@ footer p { font-size:12px; color:rgba(255,255,255,.35); font-family:'Josefin San
   <a href="../index.html#news" class="hd-back"><i class="fas fa-arrow-left"></i> ニュース一覧へ</a>
 </header>
 
-<div class="art-hero-placeholder"></div>
+<img src="../truckshow.jpg" alt="東京トラックショー" class="art-hero">
 
 <div class="art-wrap">
   <span class="art-cat">イベント</span>
@@ -68,10 +66,20 @@ footer p { font-size:12px; color:rgba(255,255,255,.35); font-family:'Josefin San
   <div class="gold-rule"></div>
   <div class="art-body">
     <p>5月14日・15日の2日間、東京で開催されたトラックショーに参加してまいりました。全国の運送会社・メーカーが一堂に集まる業界最大規模のイベントで、最新の大型トラックや物流機器を間近で見ることができました。</p>
-    <h2>最新車両・機器を間近で</h2>
-    <p>会場には国内外の主要メーカーが出展しており、最新モデルの大型トラックやトレーラー、安全装置、省エネ技術など、業界の最前線を肌で感じることができました。普段の業務では触れることのできない新技術を体感できる貴重な機会となりました。</p>
+
+    <h2>圧巻のカスタムトラックたち</h2>
+    <p>会場で特に目を引いたのが、全国各地から持ち込まれたカスタムトラックの数々。磨き抜かれた車体、精巧なライト、独自のペイントと、どの車両もオーナーのこだわりと職人技が光る仕上がりでした。ショーカーとしての完成度の高さに、プロとして改めて感銘を受けました。</p>
+
+    <div class="gallery">
+      <div class="wide"><img src="../ts1.jpg" alt="カスタムFUSO"></div>
+      <img src="../ts2.jpg" alt="Ohosiro Lease トラック後部">
+      <img src="../ts3.jpg" alt="スカニア運転席">
+      <img src="../ts4.jpg" alt="Functional Cool スカニア後部">
+      <img src="../ts5.jpg" alt="展示車両">
+    </div>
+
     <h2>業務改善のヒントを持ち帰り</h2>
-    <p>今回の視察で得た知識・情報を今後の車両選定や業務改善に積極的に活かしてまいります。沖縄の物流を支えるがなは運送として、常に最新の情報にアンテナを張り、より良いサービスをご提供できるよう努力してまいります。</p>
+    <p>今回の視察で得た知識・情報を今後の車両選定や業務改善に積極的に活かしてまいります。沖縄の物流を支えるがなは運送として、常に最新の情報にアンテナを張り、より良いサービスをご提供できるよう努めてまいります。</p>
     <p>引き続きよろしくお願いいたします。</p>
   </div>
   <a href="../index.html#news" class="back-btn"><i class="fas fa-arrow-left"></i> ニュース一覧へ戻る</a>
