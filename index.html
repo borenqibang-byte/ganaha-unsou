@@ -1293,17 +1293,17 @@
         <div class="fg-row">
           <div class="fg">
             <label>集荷場所<span class="req">*</span></label>
-            <input type="text" placeholder="例：名護市〇〇" required>
+            <input type="text" name="pickup" placeholder="例：名護市〇〇" required>
           </div>
           <div class="fg">
             <label>お届け先<span class="req">*</span></label>
-            <input type="text" placeholder="例：那覇市〇〇" required>
+            <input type="text" name="dropoff" placeholder="例：那覇市〇〇" required>
           </div>
         </div>
         <div class="fg-row">
           <div class="fg">
             <label>荷物の種類<span class="req">*</span></label>
-            <select required>
+            <select name="cargoType" required>
               <option value="" disabled selected>選択してください</option>
               <option>一般貨物</option>
               <option>産業廃棄物</option>
@@ -1314,7 +1314,7 @@
           </div>
           <div class="fg">
             <label>重量の目安</label>
-            <select>
+            <select name="weight">
               <option value="" disabled selected>選択してください</option>
               <option>500kg未満</option>
               <option>500kg〜1t</option>
@@ -1328,21 +1328,22 @@
         <div class="fg-row">
           <div class="fg">
             <label>希望日</label>
-            <input type="date">
+            <input type="date" name="desiredDate">
           </div>
           <div class="fg">
             <label>お名前<span class="req">*</span></label>
-            <input type="text" placeholder="例：山田 太郎" required>
+            <input type="text" name="name" placeholder="例：山田 太郎" required>
           </div>
         </div>
         <div class="fg">
           <label>電話番号<span class="req">*</span></label>
-          <input type="tel" placeholder="例：0980-43-XXXX" required>
+          <input type="tel" name="tel" placeholder="例：0980-43-XXXX" required>
         </div>
         <div class="fg">
           <label>備考・その他</label>
-          <textarea placeholder="荷物の詳細・特記事項など" style="min-height:100px;"></textarea>
+          <textarea name="notes" placeholder="荷物の詳細・特記事項など" style="min-height:100px;"></textarea>
         </div>
+        <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
         <button type="submit" class="sub-btn"><i class="fas fa-calculator"></i>&nbsp;&nbsp;見積もりを依頼する</button>
         <p class="est-note">※ 返信は営業時間内（平日 8:00〜18:00）にお電話またはメールにてご連絡します。</p>
       </form>
@@ -1366,14 +1367,14 @@
     <div class="form-wrap" data-r="up">
       <form onsubmit="doSub(event)">
         <div class="fg-row">
-          <div class="fg"><label>Name<span class="req">*</span></label><input type="text" placeholder="山田 太郎" required></div>
-          <div class="fg"><label>Company</label><input type="text" placeholder="株式会社〇〇"></div>
+          <div class="fg"><label>Name<span class="req">*</span></label><input type="text" name="name" placeholder="山田 太郎" required></div>
+          <div class="fg"><label>Company</label><input type="text" name="company" placeholder="株式会社〇〇"></div>
         </div>
-        <div class="fg"><label>Email<span class="req">*</span></label><input type="email" placeholder="example@mail.com" required></div>
-        <div class="fg"><label>Tel</label><input type="tel" placeholder="0980-43-9200"></div>
+        <div class="fg"><label>Email<span class="req">*</span></label><input type="email" name="email" placeholder="example@mail.com" required></div>
+        <div class="fg"><label>Tel</label><input type="tel" name="tel" placeholder="0980-43-9200"></div>
         <div class="fg">
           <label>Category</label>
-          <select>
+          <select name="category">
             <option value="">選択してください</option>
             <option>運送事業について</option>
             <option>倉庫事業について</option>
@@ -1381,7 +1382,8 @@
             <option>その他</option>
           </select>
         </div>
-        <div class="fg"><label>Message<span class="req">*</span></label><textarea placeholder="ご依頼内容・ご質問などをご記入ください。" required></textarea></div>
+        <div class="fg"><label>Message<span class="req">*</span></label><textarea name="message" placeholder="ご依頼内容・ご質問などをご記入ください。" required></textarea></div>
+        <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
         <button type="submit" class="sub-btn">Send Message</button>
       </form>
       <div class="priv">
@@ -1480,24 +1482,40 @@
   document.querySelectorAll('[data-r]').forEach(el => io.observe(el));
 
   /* contact form */
-  function doSub(e) {
+  const CONTACT_ENDPOINT = 'https://ganaha-contact.borenqibang.workers.dev';
+
+  async function doSub(e) {
     e.preventDefault();
     const f = e.target;
-    const inputs = f.querySelectorAll('input, textarea, select');
-    let body = 'がなは運送 お問い合わせフォームより\n\n';
-    inputs.forEach(el => {
-      if (el.name || el.placeholder) {
-        body += (el.placeholder || el.name) + '：' + el.value + '\n';
-      }
-    });
-    const mailto = 'mailto:g@ganaha-unsou.co.jp'
-      + '?subject=' + encodeURIComponent('【がなは運送】お問い合わせ')
-      + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
     const btn = f.querySelector('.sub-btn');
-    btn.textContent = '✓  メールソフトが開きます — そのまま送信してください';
-    btn.style.background = '#6bba38';
+    const origText = btn.textContent;
+    const fields = [
+      { label: 'お名前', value: f.name.value },
+      { label: '会社名', value: f.company.value },
+      { label: 'メール', value: f.email.value },
+      { label: '電話番号', value: f.tel.value },
+      { label: 'カテゴリ', value: f.category.value },
+      { label: 'ご相談内容', value: f.message.value },
+    ].filter(x => x.value);
+
     btn.disabled = true;
+    btn.textContent = '送信中…';
+    try {
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: 'お問い合わせ', replyTo: f.email.value, fields, website: f.website.value }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error('send failed');
+      btn.textContent = '✓  送信しました。ありがとうございます。';
+      btn.style.background = '#6bba38';
+      f.reset();
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = origText;
+      alert('送信に失敗しました。恐れ入りますが、お電話（0980-43-9200）にてご連絡いただくか、時間をおいて再度お試しください。');
+    }
   }
 
   /* loader */
@@ -1529,21 +1547,39 @@
   }
 
   /* estimate form */
-  document.getElementById('estForm').addEventListener('submit', function(e) {
+  document.getElementById('estForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const inputs = this.querySelectorAll('input, textarea, select');
-    let body = 'がなは運送 無料お見積もりフォームより\n\n';
-    const labels = this.querySelectorAll('label');
-    inputs.forEach((el, i) => {
-      const label = labels[i] ? labels[i].textContent.replace('*','').trim() : el.placeholder;
-      if (el.value) body += label + '：' + el.value + '\n';
-    });
-    const mailto = 'mailto:g@ganaha-unsou.co.jp'
-      + '?subject=' + encodeURIComponent('【がなは運送】無料お見積もりのご依頼')
-      + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
-    this.style.display = 'none';
-    document.getElementById('estDone').style.display = 'block';
+    const f = this;
+    const btn = f.querySelector('.sub-btn');
+    const origHtml = btn.innerHTML;
+    const fields = [
+      { label: '集荷場所', value: f.pickup.value },
+      { label: 'お届け先', value: f.dropoff.value },
+      { label: '荷物の種類', value: f.cargoType.value },
+      { label: '重量の目安', value: f.weight.value },
+      { label: '希望日', value: f.desiredDate.value },
+      { label: 'お名前', value: f.name.value },
+      { label: '電話番号', value: f.tel.value },
+      { label: '備考・その他', value: f.notes.value },
+    ].filter(x => x.value);
+
+    btn.disabled = true;
+    btn.innerHTML = '送信中…';
+    try {
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: '無料お見積もりのご依頼', fields, website: f.website.value }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error('send failed');
+      f.style.display = 'none';
+      document.getElementById('estDone').style.display = 'block';
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = origHtml;
+      alert('送信に失敗しました。恐れ入りますが、お電話（0980-43-9200）にてご連絡いただくか、時間をおいて再度お試しください。');
+    }
   });
 </script>
 </body>
