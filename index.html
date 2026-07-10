@@ -171,6 +171,17 @@
     }
     .hd-ig:hover { opacity: .85; }
     .sp-hd-r .hd-ig { width: 34px; height: 34px; font-size: 17px; }
+    .hd-ig-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px;
+      color: #fff; font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px; letter-spacing: .06em; font-weight: 700;
+      text-transform: none !important;
+      background: linear-gradient(45deg,#f09433,#dc2743,#bc1888);
+      transition: opacity .3s; white-space: nowrap;
+    }
+    .hd-ig-btn:hover { opacity: .88; }
+    .hd-ig-btn i { font-size: 16px; }
 
     /* SP */
     .sp-hd {
@@ -894,7 +905,7 @@
     <a href="#news">ニュース</a>
     <a href="#estimate" style="color:var(--gold); font-weight:700;">見積もり</a>
     <a href="tel:0980-43-9200" class="hd-tel"><i class="fas fa-phone"></i> 0980-43-9200</a>
-    <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" class="hd-ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" class="hd-ig-btn"><i class="fab fa-instagram"></i> instagramをフォロー</a>
   </nav>
 </header>
 
@@ -904,7 +915,7 @@
     <a href="#hero"><img src="logo_wh.png" alt="がなは運送"></a>
   </div>
   <div class="sp-hd-r">
-    <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" class="hd-ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" class="hd-ig" aria-label="instagram"><i class="fab fa-instagram"></i></a>
     <a href="tel:0980-43-9200"><i class="fas fa-phone"></i></a>
     <button class="ham" onclick="openD()"><span></span><span></span><span></span></button>
   </div>
@@ -921,6 +932,7 @@
   <a href="#news"          onclick="closeD()">ニュース</a>
   <a href="#estimate"      onclick="closeD()" style="color:var(--gold);">見積もり</a>
   <a href="#contact"       onclick="closeD()">お問い合わせ</a>
+  <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" onclick="closeD()" style="color:#dc2743;"><i class="fab fa-instagram"></i> instagramをフォロー</a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -947,7 +959,7 @@
       <a href="#contact"   class="btn-outline"><i class="fas fa-envelope"></i> お問い合わせ</a>
     </div>
     <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" class="hero-ig-link" style="display:inline-flex;align-items:center;gap:9px;margin-top:22px;color:#fff;font-size:13px;letter-spacing:.06em;opacity:.92;">
-      <i class="fab fa-instagram" style="font-size:19px;"></i> Instagramで日々の様子を発信中
+      <i class="fab fa-instagram" style="font-size:19px;"></i> instagramで日々の様子を発信中
     </a>
   </div>
 
@@ -1174,7 +1186,7 @@
     </div>
     <div class="news-grid" data-r="up">
 
-      <!-- 記事0: Instagram開設 -->
+      <!-- 記事0: instagram開設 -->
       <article class="news-card">
         <a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:200px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
           <i class="fab fa-instagram" style="font-size:72px;color:#fff;"></i>
@@ -1182,8 +1194,8 @@
         <div class="news-cat" style="background:rgba(188,24,136,.12);color:#a3185f;">SNS</div>
         <div class="news-body">
           <time class="news-date">2026.07.03</time>
-          <h3 class="news-title">公式Instagramを始めました！</h3>
-          <p class="news-text">がなは運送の公式Instagramを開設しました！トラックや現場の風景、日々の仕事の様子を写真・動画でお届けしていきます。ぜひフォローをお願いします。</p>
+          <h3 class="news-title">公式instagramを始めました！</h3>
+          <p class="news-text">がなは運送の公式instagramを開設しました！トラックや現場の風景、日々の仕事の様子を写真・動画でお届けしていきます。ぜひフォローをお願いします。</p>
           <a href="news/instagram.html" class="news-more">続きを読む <i class="fas fa-arrow-right"></i></a>
         </div>
       </article>
@@ -1412,7 +1424,7 @@
         <li><a href="tel:0980-43-9200"><i class="fas fa-phone"></i> 0980-43-9200</a></li>
         <li><a href="tel:0980-43-9210"><i class="fas fa-fax"></i> 0980-43-9210</a></li>
         <li><a href="https://goo.gl/maps/HHHaWku6UEDZ5Y7w9" target="_blank"><i class="fas fa-map-marker-alt"></i> Access</a></li>
-        <li><a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://www.instagram.com/ganahaunnsou/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> instagram</a></li>
       </ul>
     </div>
   </div>
